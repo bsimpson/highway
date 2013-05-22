@@ -1,0 +1,27 @@
+<style>
+  p {
+    font-family: "Courier New", Courier, monospace;
+  }
+</style>
+
+<section id="input">
+  <form action="/" method="post">
+    <textarea name="route"><%= params[:route] %></textarea>
+    <br />
+    <label for="route">Define your Rails routes</label>
+
+    <br />
+    <input type="text" name="grep" value="<%= params[:grep] %>" />
+    <br />
+    <label for="grep">Narrow results by searching for a pattern</label>
+
+    <br />
+    <input type="submit" id="submit" />
+  </form>
+</section>
+
+<section id="results">
+  <% @routes.each_line do |line| %>
+    <p><%= line.gsub(' ', '&nbsp;').html_safe %></p>
+  <% end %>
+</section>
