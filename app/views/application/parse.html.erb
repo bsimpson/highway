@@ -21,7 +21,11 @@
 </section>
 
 <section id="results">
-  <% @routes.each_line do |line| %>
+  <% @route_parser.routes.each_line do |line| %>
     <p><%= line.gsub(' ', '&nbsp;').html_safe %></p>
   <% end %>
+</section>
+
+<section id"=error">
+  <%= @route_parser.error %>
 </section>

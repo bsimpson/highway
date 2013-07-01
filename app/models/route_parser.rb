@@ -1,7 +1,10 @@
 require 'rails/application/route_inspector'
+require 'dummy'
 
 class RouteParser
-  def initialize(route='', controller)
+  attr_reader :error
+
+  def initialize(route='', controller=nil)
     @route = route
     @controller = controller
     parse
@@ -9,14 +12,16 @@ class RouteParser
 
   def parse
     route = @route
-    Rails.application.reload_routes!
-    Rails.application.routes.draw do
-      eval(route) if route.present?
-      root :to => 'application#parse'
-    end
+    begin
+      Dummy.routes.draw do
+        eval(route) if route.present?
+      end
 
-    @routes = inspector.format(Rails.application.routes.routes, @controller)
-    @routes.pop
+      @routes = inspector.format(Dummy.routes.routes, @controller)
+    rescue => e
+      @error = e.message
+      @routes = []
+    end
     self
   end
 

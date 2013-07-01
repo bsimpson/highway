@@ -2,6 +2,6 @@ class ApplicationController < ActionController::Base
   #protect_from_forgery
 
   def parse
-    @routes = RouteParser.new(params[:route], ENV['CONTROLLER']).grep(params[:grep]).routes
+    @route_parser = RouteParser.new(params[:route]).grep(params[:grep])
   end
 end
