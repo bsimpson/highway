@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Highway</title>
+  <title>Routastic</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <h1>Routastic</h1>
+  <h2>a Rails route editor</h2>
+
+  <%= yield %>
+
+  <section id="footer">
+    Made by <a href="https://github.com/bsimpson">Ben Simpson</a>
+  </section>
 
 </body>
 </html>

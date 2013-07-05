@@ -1,19 +1,15 @@
 <section id="input">
   <form action="/" method="post" data-url="<%= root_path %>">
-    <strong>Your Rails routes:</strong>
+    <h4>Your Rails routes:</h4>
     <div name="route" id="editor"><%= params[:route] %></div>
 
-    <p>
-      <input type="submit" id="submit" />
-    </p>
-
-    <strong>(Optional) Narrow your results:</strong>
-    <br />
+    <h4>(Optional) Narrow your results:</h4>
     <input type="text" id="grep" value="<%= params[:grep] %>" />
 
     <br />
   </form>
 </section>
 
+<h4>Results:</h4>
 <pre id="results">
 </pre>
