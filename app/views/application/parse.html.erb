@@ -2,11 +2,16 @@
   p {
     font-family: "Courier New", Courier, monospace;
   }
+
+  #editor {
+    width: 500px;
+    height: 200px;
+  }
 </style>
 
 <section id="input">
-  <form action="/" method="post">
-    <textarea name="route"><%= params[:route] %></textarea>
+<form action="/" method="post" data-url="<%= root_path %>">
+    <div name="route" id="editor"><%= params[:route] %></div>
     <br />
     <label for="route">Define your Rails routes</label>
 
@@ -20,11 +25,9 @@
   </form>
 </section>
 
-<section id="results">
-  <% @route_parser.routes.each_line do |line| %>
-    <p><%= line.gsub(' ', '&nbsp;').html_safe %></p>
-  <% end %>
-</section>
+<pre id="results">
+  <!-- Placeholder for parsed routes -->
+</pre>
 
 <section id"=error">
   <%= @route_parser.error %>
