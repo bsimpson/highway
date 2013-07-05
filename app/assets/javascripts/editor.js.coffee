@@ -4,11 +4,13 @@ class Highway.Editor
     @editor = ace.edit('editor')
     @editor.getSession().setMode('ace/mode/ruby')
     @editor.setTheme('ace/theme/twilight')
+    @term = @form.find('#grep')
 
     @setListeners()
 
   setListeners: ->
     @form.on 'submit', @submitForm
+    @editor.on 'blur', @submitForm
 
   submitForm: (evt) =>
     evt.preventDefault()
@@ -20,8 +22,10 @@ class Highway.Editor
         route: @editor.getValue()
       success: @displayResults
 
-  displayResults: (data, status, xhr) ->
+  displayResults: (data, status, xhr) =>
     $('#results').html('')
     data.split(/\n/).forEach (line) ->
       pTag = $('<p></p>').html(line)
       $('#results').append(pTag)
+
+    @term.trigger('keyup')
