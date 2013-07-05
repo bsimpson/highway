@@ -30,6 +30,10 @@ p {
   position: fixed;
   bottom: 0;
   background-color: white;
-  width: 100%;
+  width: 90%;
   opacity: .6;
+
+  .right {
+    float: right;
+  }
 }

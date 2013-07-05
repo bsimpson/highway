@@ -11,9 +11,9 @@ class Highway.Editor
   setListeners: ->
     @form.on 'submit', @submitForm
     @editor.on 'blur', @submitForm
+    @editor.on 'change', @submitFormAfterDelay
 
-  submitForm: (evt) =>
-    evt.preventDefault()
+  submitForm: =>
     $.ajax
       method: 'post'
       dataType: 'text'
@@ -29,3 +29,7 @@ class Highway.Editor
       $('#results').append(pTag)
 
     @term.trigger('keyup')
+
+  submitFormAfterDelay: =>
+    clearTimeout(@timeout)
+    @timeout = setTimeout(@submitForm, 500)
