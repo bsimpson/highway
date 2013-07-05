@@ -21,5 +21,7 @@ class Highway.Editor
       success: @displayResults
 
   displayResults: (data, status, xhr) ->
-    data.replace('\n', '&nbsp;')
-    $('#results').html(data)
+    $('#results').html('')
+    data.split(/\n/).forEach (line) ->
+      pTag = $('<p></p>').html(line)
+      $('#results').append(pTag)
