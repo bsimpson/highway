@@ -1,34 +1,19 @@
-<style>
-  p {
-    font-family: "Courier New", Courier, monospace;
-  }
-
-  #editor {
-    width: 500px;
-    height: 200px;
-  }
-</style>
-
 <section id="input">
-<form action="/" method="post" data-url="<%= root_path %>">
+  <form action="/" method="post" data-url="<%= root_path %>">
+    <strong>Your Rails routes:</strong>
     <div name="route" id="editor"><%= params[:route] %></div>
-    <br />
-    <label for="route">Define your Rails routes</label>
 
+    <p>
+      <input type="submit" id="submit" />
+    </p>
+
+    <strong>(Optional) Narrow your results:</strong>
     <br />
     <input type="text" id="grep" value="<%= params[:grep] %>" />
-    <br />
-    <label for="grep">Narrow results by searching for a pattern</label>
 
     <br />
-    <input type="submit" id="submit" />
   </form>
 </section>
 
 <pre id="results">
-  <!-- Placeholder for parsed routes -->
 </pre>
-
-<section id"=error">
-  <%= @route_parser.error %>
-</section>
