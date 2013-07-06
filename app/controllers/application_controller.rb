@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
 
     respond_to do |format|
       format.text do
-        render inline: @route_parser.routes
+        if @route_parser.error.present?
+          render inline: @route_parser.error, status: 400
+        else
+          render inline: @route_parser.routes, status: :ok
+        end
       end
       format.html
     end

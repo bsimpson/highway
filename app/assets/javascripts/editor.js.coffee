@@ -21,9 +21,11 @@ class Highway.Editor
       data:
         route: @editor.getValue()
       success: @displayResults
+      error: @displayError
 
   displayResults: (data, status, xhr) =>
     $('#results').html('')
+    $('#error').slideUp()
     data.split(/\n/).forEach (line) ->
       pTag = $('<p></p>').html(line)
       $('#results').append(pTag)
@@ -33,3 +35,6 @@ class Highway.Editor
   submitFormAfterDelay: =>
     clearTimeout(@timeout)
     @timeout = setTimeout(@submitForm, 500)
+
+  displayError: (xhr, status, error) =>
+    $('#error').html(xhr.responseText).slideDown()

@@ -37,3 +37,11 @@ p {
     float: right;
   }
 }
+
+#error {
+  padding: 10px;
+  background-color: #FFA198;
+  border: 2px solid #FF5B4C;
+  color: white;
+  display: none;
+}

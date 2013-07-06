@@ -16,9 +16,8 @@ class RouteParser
       Dummy.routes.draw do
         eval(route) if route.present?
       end
-
       @routes = inspector.format(Dummy.routes.routes, @controller)
-    rescue => e
+    rescue SyntaxError, Exception => e
       @error = e.message
       @routes = []
     end
