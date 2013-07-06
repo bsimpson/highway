@@ -7,4 +7,3 @@
 //= require highway
 //= require editor
 //= require highlighter
-//= require analytics
