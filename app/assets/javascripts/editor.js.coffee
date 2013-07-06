@@ -6,6 +6,7 @@ class Highway.Editor
     @editor.setTheme('ace/theme/twilight')
     @editor.getSession().setTabSize(2)
     @editor.getSession().setUseSoftTabs(true)
+    @editor.focus()
     @term = @form.find('#grep')
 
     @setListeners()
