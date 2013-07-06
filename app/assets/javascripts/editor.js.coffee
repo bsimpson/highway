@@ -4,6 +4,8 @@ class Highway.Editor
     @editor = ace.edit('editor')
     @editor.getSession().setMode('ace/mode/ruby')
     @editor.setTheme('ace/theme/twilight')
+    @editor.getSession().setTabSize(2)
+    @editor.getSession().setUseSoftTabs(true)
     @term = @form.find('#grep')
 
     @setListeners()
