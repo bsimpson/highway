@@ -1,6 +1,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.highlight
+//= require ace/ace
+//= require ace/theme-twilight
+//= require ace/mode-ruby
 //= require highway
 //= require editor
 //= require highlighter
