@@ -1,4 +1,5 @@
 require 'rails/application/route_inspector'
+require 'timeout'
 require 'dummy'
 
 class RouteParser
@@ -13,8 +14,10 @@ class RouteParser
   def parse
     route = @route
     begin
-      Dummy.routes.draw do
-        eval(route) if route.present?
+      Timeout::timeout(1) do
+        Dummy.routes.draw do
+          instance_eval(-> { $SAFE=4; route }.call) if route.present?
+        end
       end
       @routes = inspector.format(Dummy.routes.routes, @controller)
     rescue SyntaxError, Exception => e
