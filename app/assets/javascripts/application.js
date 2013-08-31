@@ -7,3 +7,4 @@
 //= require highway
 //= require editor
 //= require highlighter
+//= require examples

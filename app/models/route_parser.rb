@@ -3,7 +3,7 @@ require 'timeout'
 require 'dummy'
 
 class RouteParser
-  attr_reader :error
+  attr_reader :error, :route, :pattern
 
   def initialize(route='', controller=nil)
     @route = route
@@ -32,6 +32,7 @@ class RouteParser
   end
 
   def grep(pattern)
+    @pattern = pattern
     @routes = @routes.select { |route| route[/#{pattern}/] }
     self
   end

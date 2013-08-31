@@ -45,3 +45,19 @@ p {
   color: white;
   display: none;
 }
+
+form.button_to {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+  border: rgba(0,0,0,0.15);
+
+  input {
+    float: right;
+    margin-right: 50px;
+    background-color: #f5f5f5;
+    border: 2px solid rgba(0,0,0,0.15);
+  }
+}

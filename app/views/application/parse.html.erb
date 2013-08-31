@@ -1,17 +1,19 @@
-<section id="input">
-  <form action="/" method="post" data-url="<%= root_path %>">
+<form action="/" method="post" data-url="<%= root_path %>" id="input">
+  <section>
     <h4>Your Rails routes:</h4>
-    <div name="route" id="editor"><%= params[:route] %></div>
+    <div name="route" id="editor"><%= route_parser.route %></div>
     <div id="error"></div>
 
     <h4>(Optional) Narrow your results:</h4>
-    <input type="text" id="grep" value="<%= params[:grep] %>" />
+    <input type="text" id="grep" value="<%= route_parser.pattern %>" />
 
     <br />
-  </form>
-</section>
+  </section>
 
-<h4>Results:</h4>
-<pre id="results">
-  No results yet. Try creating some routes
-</pre>
+  <h4>Results:</h4>
+  <pre id="results">
+    No results yet. Try creating some routes
+  </pre>
+</form>
+
+<%= button_to 'Save', examples_path, id: "share_button" %>

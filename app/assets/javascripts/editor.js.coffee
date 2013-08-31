@@ -1,7 +1,8 @@
 class Highway.Editor
   constructor: ->
-    @form = $('#input form')
+    @form = Highway.Editor.form()
     @editor = ace.edit('editor')
+    @editor = Highway.Editor.editor()
     @editor.getSession().setMode('ace/mode/ruby')
     @editor.setTheme('ace/theme/twilight')
     @editor.getSession().setTabSize(2)
@@ -10,11 +11,21 @@ class Highway.Editor
     @term = @form.find('#grep')
 
     @setListeners()
+    @submitForm() if @editor.getValue().length > 0
 
   setListeners: ->
     @form.on 'submit', @submitForm
     @editor.on 'blur', @submitForm
     @editor.on 'change', @submitFormAfterDelay
+
+  @editor: ->
+    ace.edit('editor')
+
+  @editorValue: ->
+    @editor().getValue()
+
+  @form: ->
+    $('form#input')
 
   submitForm: =>
     $.ajax

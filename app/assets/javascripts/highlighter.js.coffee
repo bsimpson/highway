@@ -1,7 +1,7 @@
 class Highway.Highlighter
   constructor: ->
     @container = $('#results')
-    @form = $('#input form')
+    @form = Highway.Editor.form()
     @term = @form.find('#grep')
 
     @setListeners()
